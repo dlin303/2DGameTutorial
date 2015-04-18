@@ -4,7 +4,7 @@ using System.Collections;
 public class MenuScript : MonoBehaviour {
 
 	void OnGUI(){
-		const int buttonWidth = 84;
+		const int buttonWidth = 120;
 		const int buttonHeight = 60;
 
 		Rect buttonRect = new Rect (
