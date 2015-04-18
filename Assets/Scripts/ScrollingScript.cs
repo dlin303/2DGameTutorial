@@ -16,7 +16,7 @@ public class ScrollingScript : MonoBehaviour {
 			backgroundPart = new List<Transform>(); //get all children of the layer with a renderer
 			for (int i=0; i < transform.childCount; i++) {
 				Transform child = transform.GetChild(i);
-				if(child.renderer != null) {
+				if(child.GetComponent<Renderer>() != null) {
 					backgroundPart.Add(child);	
 				}
 			}
@@ -46,10 +46,10 @@ public class ScrollingScript : MonoBehaviour {
 				if (firstChild.position.x < Camera.main.transform.position.x) {
 
 					//expensive way to test if renderer is visible from camera
-					if(!firstChild.renderer.IsVisibleFrom(Camera.main)) {
+					if(!firstChild.GetComponent<Renderer>().IsVisibleFrom(Camera.main)) {
 						Transform lastChild = backgroundPart.LastOrDefault();
 						Vector3 lastPosition = lastChild.position;
-						Vector3 lastSize = lastChild.renderer.bounds.max - lastChild.renderer.bounds.min;
+						Vector3 lastSize = lastChild.GetComponent<Renderer>().bounds.max - lastChild.GetComponent<Renderer>().bounds.min;
 
 						//set position of first child, which is out of view, to be in the position AFTER the last child.
 						firstChild.position = new Vector3(

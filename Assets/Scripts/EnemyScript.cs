@@ -19,7 +19,7 @@ public class EnemyScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (hasSpawn == false){
-			if( renderer.IsVisibleFrom (Camera.main)) {
+			if( GetComponent<Renderer>().IsVisibleFrom (Camera.main)) {
 				Spawn (true);
 			}
 		} else {
@@ -30,7 +30,7 @@ public class EnemyScript : MonoBehaviour {
 				}
 			}
 
-			if (!renderer.IsVisibleFrom (Camera.main)) {
+			if (!GetComponent<Renderer>().IsVisibleFrom (Camera.main)) {
 				Destroy (gameObject);
 			}
 		}
@@ -40,7 +40,7 @@ public class EnemyScript : MonoBehaviour {
 
 	private void Spawn(bool spawn){
 		hasSpawn = spawn;
-		collider2D.enabled = spawn;
+		GetComponent<Collider2D>().enabled = spawn;
 		movescript.enabled = spawn;
 		foreach (WeaponScript weapon in weapons) {
 			weapon.enabled = spawn;
